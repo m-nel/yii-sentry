@@ -171,14 +171,16 @@ class RSentryLogRoute extends CLogRoute {
                 Yii::log("'$this->sentryComponent' does not exist", 
                         CLogger::LEVEL_TRACE, 'application.RSentryLogRoute');
                 $this->_client = false;
-            } 
-            elseif(!Yii::app()->{$this->sentryComponent}->getIsInitialized()) {
-                Yii::log("'$this->sentryComponent' not initialised", 
-                        CLogger::LEVEL_TRACE, 'application.RSentryLogRoute');
-                $this->_client = false;
-            } 
-            else {
-                $this->_client = Yii::app()->{$this->sentryComponent};
+            } else {
+                $sentry = Yii::app()->{$this->sentryComponent};
+                
+                if(!$sentry || !$sentry->getIsInitialized()) {
+                    Yii::log("'$this->sentryComponent' not initialised", 
+                           CLogger::LEVEL_TRACE, 'application.RSentryLogRoute');
+                    $this->_client = false;
+                } else {
+                    $this->_client = $sentry;
+                }
             }
         }
         
