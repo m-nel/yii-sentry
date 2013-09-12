@@ -32,8 +32,6 @@ return array(
         'sentry'=>array(
             'class'=>'ext.yii-sentry.components.RSentryClient',
             'dsn'=>'<YOUR_DSN>',
-            'enabled'=>true // Optional (Defaults to true) - Whether to enable sending logs to Sentry
-            'options'=>array() // Optional (Defaults to empty array) - The Raven_Client configuration options, see: https://github.com/getsentry/raven-php#configuration
         ),
         'log'=>array(
             'class'=>'CLogRouter',
@@ -41,8 +39,6 @@ return array(
                 array(
                     'class'=>'ext.yii-sentry.components.RSentryLogRoute',
                     'levels'=>'error, warning',
-                    'sentryComponent'=>'sentry', // Optional (Defaults to 'sentry') - The component ID of the RSentryClient to send the logs to
-                    'ravenLogCategory'=>'raven' // Optional (Defaults to 'raven') - Any errors encountered in the extension will be logged with this category
                 ),
                 .....
             ),
@@ -76,5 +72,5 @@ array(
 
 ### Acknowledgements
 
-* Thanks to the Sentry Team for raven-php and of course, Sentry
-* Thanks to @rolies106 for [yii-sentry-log](https://github.com/rolies106/yii-sentry-log) which served as inspiration for this extension
+* Thanks to the Sentry Team for [raven-php](https://github.com/getsentry/raven-php) and of course, [Sentry](https://www.getsentry.com/)
+* Thanks to [@rolies106](https://github.com/rolies106) for [yii-sentry-log](https://github.com/rolies106/yii-sentry-log) which served as inspiration for this extension
