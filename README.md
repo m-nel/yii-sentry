@@ -10,12 +10,13 @@ An example use case could be using Sentry's [projects](https://www.getsentry.com
 
 * Yii Framework > 1.1.x (Have not test any other frameworks)
 * [Sentry Account](https://www.getsentry.com/) - OR - Your own [Sentry server](http://sentry.readthedocs.org/en/latest/quickstart/)
+  * If you use Sentry.io account, find "Deprecated DSN" in "Client Keys" section of Project Settings.
 
 ## Usage
 
-### Download
+### Install
 
-Unzip the extension under ***protected/extensions/yii-sentry***
+Download and unzip [bundle](https://github.com/getsentry/raven-php/archive/refs/heads/master.zip) into extension folder (usually under ***protected/extensions/yii-sentry***)
 
 ### Configure
 
@@ -28,17 +29,21 @@ You will need to configure 2 components, namely ***RSentryClient*** & ***RSentry
 ```php
 return array(
     .....
-    'components'=>array(
-        'sentry'=>array(
+    'components' => array(
+        'sentry' => array(
             'class'=>'ext.yii-sentry.components.RSentryClient',
-            'dsn'=>'<YOUR_DSN>',
+            'dsn'=>'<YOUR_DSN>', // use only "Deprecated DSN"
         ),
-        'log'=>array(
-            'class'=>'CLogRouter',
-            'routes'=>array(
+        'log' => array(
+            'class' => 'CLogRouter',
+            'routes' => array(
                 array(
-                    'class'=>'ext.yii-sentry.components.RSentryLogRoute',
-                    'levels'=>'error, warning',
+                    'class' => 'ext.yii-sentry.components.RSentryLogRoute',
+                    'levels' => 'error, warning',
+                    'except' => array(
+                        .....
+                        // if you want to ignore some errors you do not want to caught by Sentry
+                    ),
                 ),
                 .....
             ),
