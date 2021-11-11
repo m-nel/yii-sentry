@@ -42,7 +42,7 @@ return array(
                     'levels' => 'error, warning',
                     'except' => array(
                         .....
-                        // if you want to ignore some errors you do not want to caught by Sentry
+                        // if you want to ignore some errors
                     ),
                 ),
                 .....
