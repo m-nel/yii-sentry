@@ -16,7 +16,7 @@ An example use case could be using Sentry's [projects](https://www.getsentry.com
 
 ### Install
 
-Download and unzip [bundle](https://github.com/getsentry/raven-php/archive/refs/heads/master.zip) into extension folder (usually under ***protected/extensions/yii-sentry***)
+Download and unzip this bundle into extension folder (usually under ***protected/extensions/yii-sentry***)
 
 ### Configure
 
